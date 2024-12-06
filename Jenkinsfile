@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Run tests inside the Docker container
-                    def testResult = sh(script: 'docker run --rm $DOCKER_IMAGE:$DOCKER_TAG npm test', returnStatus: true)
+                    def testResult = sh(script: 'docker run --rm $DOCKER_IMAGE:$DOCKER_TAG test', returnStatus: true)
                     if (testResult != 0) {
                         currentBuild.result = 'FAILURE'
                         error("Tests failed")
